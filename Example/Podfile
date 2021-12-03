@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'DBLanguageManager_Example' do
+  pod 'DBLanguageManager', :path => '../'
+
+  target 'DBLanguageManager_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
