@@ -7,7 +7,7 @@
 //
 
 #import "DBViewController.h"
-
+#import "DBLanguageManager.h"
 @interface DBViewController ()
 
 @end
@@ -17,9 +17,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = UIColor.whiteColor;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height/2-80, [UIScreen mainScreen].bounds.size.width, 20)];
+    label.text = @"labelText";
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:label];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-100, [UIScreen mainScreen].bounds.size.height/2, 200, 30);
+    [button setTitle:@"buttonText" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
 }
-
+- (void)buttonClick:(UIButton *)sender {
+    if ([sender.currentTitle isEqualToString:@"Change Language"]) {
+        [DBLanguageManager.shareManager changeLanguageWithType:@"Chinese"];
+    } else {
+        [DBLanguageManager.shareManager changeLanguageWithType:@"English"];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

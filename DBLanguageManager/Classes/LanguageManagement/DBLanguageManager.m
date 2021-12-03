@@ -14,8 +14,7 @@ static DBLanguageManager *_manager = nil;
 @interface DBLanguageManager ()
 @property(nonatomic,strong) NSMutableDictionary *viewsDic;
 @property(nonatomic,strong) NSRecursiveLock *recusiveLock;
-@property(nonatomic,strong) NSArray *languageArray;
-@property(nonatomic,strong) NSArray *codesArray;
+@property(nonatomic,strong) NSDictionary *languageDictionary;
 @end
 
 @implementation DBLanguageManager
@@ -33,21 +32,16 @@ static DBLanguageManager *_manager = nil;
     if (self) {
         self.viewsDic = [NSMutableDictionary dictionary];
         self.recusiveLock = [[NSRecursiveLock alloc] init];
-        self.languageArray = [NSArray array];
-        self.codesArray = [NSArray array];
+        self.languageDictionary = [NSDictionary dictionary];
     }
     return self;
 }
 
-- (void)configureLanguageArray:(NSArray<NSString *> *)languageArray {
-    self.languageArray = languageArray;
+- (void)configureLanguagesDictionary:(NSDictionary *)languageDictionary {
+    self.languageDictionary = languageDictionary;
 }
 
-- (void)configureCodesArray:(NSArray<NSString *> *)codesArray {
-    self.codesArray = codesArray;
-}
-
-- (void)changeLanguageWithType:(LanguageType)type {
+- (void)changeLanguageWithType:(NSString *)type {
     [self saveLanguageWithType:type];
     [self.viewsDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         UIView *view = (UIView *)obj;
@@ -57,24 +51,21 @@ static DBLanguageManager *_manager = nil;
     }];
 }
 
-- (void)saveLanguageWithType:(LanguageType)type {
-    [[NSUserDefaults standardUserDefaults] setValue:@(type) forKey:kLanguageKey];
+- (void)saveLanguageWithType:(NSString *)type {
+    [[NSUserDefaults standardUserDefaults] setValue:type forKey:kLanguageKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSString*)fetchLanguageWithKey:(NSString*)key languageType:(LanguageType)type {
-    NSString *language = nil;
-    if (self.languageArray.count) {
-        NSString *plistPath = [[NSBundle mainBundle] pathForResource:self.languageArray[type] ofType:@"strings"];
-        NSDictionary *languageDic = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-        language = [languageDic valueForKey:key];
-    }
+- (NSString*)fetchLanguageWithKey:(NSString*)key languageType:(NSString *)type {
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:type ofType:@"strings"];
+    NSDictionary *languageDic = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    NSString *language = [languageDic valueForKey:key];
     return language;
 }
 
-- (LanguageType)fetchCurrentLanguageType {
-    NSNumber *languageType_Number =  [[NSUserDefaults standardUserDefaults] objectForKey:kLanguageKey];
-    if (!languageType_Number) {
+- (NSString *)fetchCurrentLanguageType {
+    __block NSString *languageType =  [[NSUserDefaults standardUserDefaults] objectForKey:kLanguageKey];
+    if (!languageType) {
         NSArray *languageArray = [NSLocale preferredLanguages];
         NSString *countryCode = @"";
         if (@available(iOS 10.0, *)) {
@@ -85,18 +76,16 @@ static DBLanguageManager *_manager = nil;
         if (languageArray.count) {
             NSString *currentLanguage = [languageArray firstObject];
             currentLanguage = [currentLanguage stringByReplacingOccurrencesOfString:countryCode withString:@""];
-            __block NSUInteger index = 0;
-            [self.codesArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.languageDictionary.allKeys enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 if ([currentLanguage hasPrefix:obj]) {
-                    index = idx;
+                    languageType = [self.languageDictionary valueForKey:obj];
                     *stop = YES;
                 }
             }];
-            [self saveLanguageWithType:index];
-            languageType_Number = [NSNumber numberWithInteger:index];
+            [self saveLanguageWithType:languageType];
         }
     }
-    return [languageType_Number integerValue];
+    return languageType;
 }
 
 - (void)addView:(UIView *)view {

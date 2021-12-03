@@ -7,12 +7,25 @@
 //
 
 #import "DBAppDelegate.h"
-
+#import "DBLanguageManager.h"
+#import "DBViewController.h"
 @implementation DBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [[DBLanguageManager shareManager] configureLanguagesDictionary:@{@"en":@"English",@"zh_Hans":@"Chinese"}];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColor.blackColor} forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColor.redColor} forState:UIControlStateSelected];
+    UITabBarController *tab = [[UITabBarController alloc] init];
+    DBViewController *vc1 = [DBViewController new];
+    vc1.tabBarItem.title = @"tabbar_title_1";
+    DBViewController *vc2 = [DBViewController new];
+    vc2.tabBarItem.title = @"tabbar_title_2";
+    tab.viewControllers = @[vc1,vc2];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = tab;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

@@ -39,8 +39,6 @@
         } else {
             method_exchangeImplementations(originalMethodAppear, swizzledMethodAppear);
         }
-    
-        
     });
 }
 -(NSMutableDictionary*)stateDictionary{
@@ -74,7 +72,7 @@
     }
 }
 -(void)changeLanguage{
-    LanguageType languageType = [[DBLanguageManager shareManager] fetchCurrentLanguageType];
+    NSString *languageType = [[DBLanguageManager shareManager] fetchCurrentLanguageType];
     [self.stateDictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         NSNumber *state_number = (NSNumber*)key;
         NSString *title = (NSString*)obj;

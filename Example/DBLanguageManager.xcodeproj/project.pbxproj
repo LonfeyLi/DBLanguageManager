@@ -23,6 +23,8 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		940B32652759F76900E03501 /* English.strings in Resources */ = {isa = PBXBuildFile; fileRef = 940B32642759F76900E03501 /* English.strings */; };
+		940B32672759F77400E03501 /* Chinese.strings in Resources */ = {isa = PBXBuildFile; fileRef = 940B32662759F77400E03501 /* Chinese.strings */; };
 		B503665ACE92002D36B9C07E /* Pods_DBLanguageManager_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E344A41479589AA0F6369E50 /* Pods_DBLanguageManager_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		940B32642759F76900E03501 /* English.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = English.strings; sourceTree = "<group>"; };
+		940B32662759F77400E03501 /* Chinese.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Chinese.strings; sourceTree = "<group>"; };
 		A097C79D39B0C0351F879EB8 /* Pods_DBLanguageManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBLanguageManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA03B89BB285E20B113687CF /* Pods-DBLanguageManager_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBLanguageManager_Tests.debug.xcconfig"; path = "Target Support Files/Pods-DBLanguageManager_Tests/Pods-DBLanguageManager_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E344A41479589AA0F6369E50 /* Pods_DBLanguageManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBLanguageManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +144,8 @@
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				940B32642759F76900E03501 /* English.strings */,
+				940B32662759F77400E03501 /* Chinese.strings */,
 			);
 			name = "Example for DBLanguageManager";
 			path = DBLanguageManager;
@@ -280,8 +286,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				940B32672759F77400E03501 /* Chinese.strings in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				940B32652759F76900E03501 /* English.strings in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);

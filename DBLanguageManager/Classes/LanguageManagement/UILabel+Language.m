@@ -38,7 +38,7 @@
     [[DBLanguageManager shareManager] addView:self];
 }
 - (void)changeLanguage {
-    LanguageType languageType = [[DBLanguageManager shareManager] fetchCurrentLanguageType];
+    NSString *languageType = [[DBLanguageManager shareManager] fetchCurrentLanguageType];
     NSString *language = [[DBLanguageManager shareManager] fetchLanguageWithKey:self.languageKey languageType:languageType];
     if (language) {
         [self setTextWithLanguage:language];
