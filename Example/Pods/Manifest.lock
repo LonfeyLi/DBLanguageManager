@@ -1,0 +1,16 @@
+PODS:
+  - DBLanguageManager (0.1.0)
+
+DEPENDENCIES:
+  - DBLanguageManager (from `../`)
+
+EXTERNAL SOURCES:
+  DBLanguageManager:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DBLanguageManager: 11d5a4e0eedad3805ed6d5d0c69861723da2cbd9
+
+PODFILE CHECKSUM: 5e75abd85e52b9e3e7d0a0d5bc27d6b58e927e46
+
+COCOAPODS: 1.11.2

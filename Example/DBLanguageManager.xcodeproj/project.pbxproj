@@ -39,8 +39,8 @@
 /* Begin PBXFileReference section */
 		0625AF7CBAB3D254373DB79E /* Pods-DBLanguageManager_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBLanguageManager_Tests.release.xcconfig"; path = "Target Support Files/Pods-DBLanguageManager_Tests/Pods-DBLanguageManager_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2AA07BD83CD45272E9FA6960 /* Pods-DBLanguageManager_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBLanguageManager_Example.release.xcconfig"; path = "Target Support Files/Pods-DBLanguageManager_Example/Pods-DBLanguageManager_Example.release.xcconfig"; sourceTree = "<group>"; };
-		2CD251E2B71F520D78F11BF0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		32C78B6F448C67645E743D13 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		2CD251E2B71F520D78F11BF0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		32C78B6F448C67645E743D13 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* DBLanguageManager_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DBLanguageManager_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,7 +65,7 @@
 		A097C79D39B0C0351F879EB8 /* Pods_DBLanguageManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBLanguageManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA03B89BB285E20B113687CF /* Pods-DBLanguageManager_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBLanguageManager_Tests.debug.xcconfig"; path = "Target Support Files/Pods-DBLanguageManager_Tests/Pods-DBLanguageManager_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E344A41479589AA0F6369E50 /* Pods_DBLanguageManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DBLanguageManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F728F76701E58198B6A564C2 /* DBLanguageManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = DBLanguageManager.podspec; path = ../DBLanguageManager.podspec; sourceTree = "<group>"; };
+		F728F76701E58198B6A564C2 /* DBLanguageManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DBLanguageManager.podspec; path = ../DBLanguageManager.podspec; sourceTree = "<group>"; };
 		FEA7D2D6F78D016FFA5D3D47 /* Pods-DBLanguageManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBLanguageManager_Example.debug.xcconfig"; path = "Target Support Files/Pods-DBLanguageManager_Example/Pods-DBLanguageManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,7 +193,6 @@
 				BA03B89BB285E20B113687CF /* Pods-DBLanguageManager_Tests.debug.xcconfig */,
 				0625AF7CBAB3D254373DB79E /* Pods-DBLanguageManager_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -248,6 +247,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "lonfey6@163.com";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 8LE994RPJG;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -258,6 +260,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -494,6 +497,7 @@
 			baseConfigurationReference = FEA7D2D6F78D016FFA5D3D47 /* Pods-DBLanguageManager_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8LE994RPJG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBLanguageManager/DBLanguageManager-Prefix.pch";
 				INFOPLIST_FILE = "DBLanguageManager/DBLanguageManager-Info.plist";
@@ -510,6 +514,7 @@
 			baseConfigurationReference = 2AA07BD83CD45272E9FA6960 /* Pods-DBLanguageManager_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8LE994RPJG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DBLanguageManager/DBLanguageManager-Prefix.pch";
 				INFOPLIST_FILE = "DBLanguageManager/DBLanguageManager-Info.plist";
