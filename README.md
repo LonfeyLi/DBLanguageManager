@@ -1,3 +1,4 @@
+一个支持国际化配置的库，首先读取系统设定的语言，如果项目中支持的语言不包含系统语言，就默认英语，支持就跟随系统语言，可在项目中切换语言，可全局切换设定的语言
 # DBLanguageManager
 
 [![CI Status](https://img.shields.io/travis/lonfey6@163.com/DBLanguageManager.svg?style=flat)](https://travis-ci.org/lonfey6@163.com/DBLanguageManager)
