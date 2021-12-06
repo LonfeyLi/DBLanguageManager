@@ -14,6 +14,11 @@ static NSString *const kLanguageKey = @"kLanguageKey";
 
 + (instancetype)shareManager;
 /**
+ 配置默认的语言：如果配置的语言不包含系统当前的语言，就读取默认语言，不配置就默认为英语
+ * language: 默认语言,和type保持一致
+ */
+- (void)configureDefaultLanguage:(NSString *)language;
+/**
  配置支持的语言数组
  * languageDictionary: key为语言code value为strings文件名
  */

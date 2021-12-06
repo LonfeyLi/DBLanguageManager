@@ -14,6 +14,7 @@ static DBLanguageManager *_manager = nil;
 @interface DBLanguageManager ()
 @property(nonatomic,strong) NSMutableDictionary *viewsDic;
 @property(nonatomic,strong) NSRecursiveLock *recusiveLock;
+@property(nonatomic,strong) NSString *defaultLanguage;
 @property(nonatomic,strong) NSDictionary *languageDictionary;
 @end
 
@@ -33,10 +34,13 @@ static DBLanguageManager *_manager = nil;
         self.viewsDic = [NSMutableDictionary dictionary];
         self.recusiveLock = [[NSRecursiveLock alloc] init];
         self.languageDictionary = [NSDictionary dictionary];
+        self.defaultLanguage = @"Englosh";
     }
     return self;
 }
-
+- (void)configureDefaultLanguage:(NSString *)language {
+    self.defaultLanguage = language;
+}
 - (void)configureLanguagesDictionary:(NSDictionary *)languageDictionary {
     self.languageDictionary = languageDictionary;
 }
@@ -82,8 +86,11 @@ static DBLanguageManager *_manager = nil;
                     *stop = YES;
                 }
             }];
-            [self saveLanguageWithType:languageType];
         }
+        if (!languageType) {
+            languageType = self.defaultLanguage;
+        }
+        [self saveLanguageWithType:languageType];
     }
     return languageType;
 }

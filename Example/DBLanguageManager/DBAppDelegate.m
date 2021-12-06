@@ -14,6 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[DBLanguageManager shareManager] configureLanguagesDictionary:@{@"en":@"English",@"zh_Hans":@"Chinese"}];
+    [[DBLanguageManager shareManager] configureDefaultLanguage:@"Chinese"];
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColor.blackColor} forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColor.redColor} forState:UIControlStateSelected];
     UITabBarController *tab = [[UITabBarController alloc] init];
