@@ -19,8 +19,8 @@
     dispatch_once(&onceToken, ^{
         Class class = [self class];
         
-        SEL originalSelectorDidAppear = @selector(didMoveToSuperview);
-        SEL swizzledSelectorDidAppear = @selector(lf_didMoveToSuperview);
+        SEL originalSelectorDidAppear = @selector(setTitle:forState:);
+        SEL swizzledSelectorDidAppear = @selector(lf_setTitle:forState:);
         
         Method originalMethodAppear = class_getInstanceMethod(class, originalSelectorDidAppear);
         Method swizzledMethodAppear = class_getInstanceMethod(class, swizzledSelectorDidAppear);
@@ -53,32 +53,26 @@
 -(void)setStateDictionary:(NSMutableDictionary *)stateDictionary{
     objc_setAssociatedObject(self, @selector(stateDictionary), stateDictionary, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-
--(void)lf_didMoveToSuperview{
-    [[DBLanguageManager shareManager] addView:self];
-    [self insertOrignKeyWithState:UIControlStateNormal];
-    [self insertOrignKeyWithState:UIControlStateHighlighted];
-    [self insertOrignKeyWithState:UIControlStateDisabled];
-    [self insertOrignKeyWithState:UIControlStateSelected];
-    [self changeLanguage];
-
-}
--(void)insertOrignKeyWithState:(UIControlState) state{
-    if (![self.stateDictionary objectForKey:@(state)]) {
-        NSString *currentTitle = [self titleForState:(state)];
-        if(currentTitle){
-            [self.stateDictionary setObject:currentTitle forKey:@(state)];
-        }
+- (void)lf_setTitle:(NSString *)title forState:(UIControlState)state {
+    [self.stateDictionary setObject:title forKey:@(state)];
+    NSString *languageType = [[DBLanguageManager shareManager] fetchCurrentLanguageType];
+    NSString *language = [[DBLanguageManager shareManager] fetchLanguageWithKey:title languageType:languageType];
+    if (language) {
+        [[DBLanguageManager shareManager] addView:self];
+        [self lf_setTitle:language forState:state];
+    } else {
+        [self lf_setTitle:title forState:state];
     }
 }
--(void)changeLanguage{
+
+-(void)changeLanguage {
     NSString *languageType = [[DBLanguageManager shareManager] fetchCurrentLanguageType];
     [self.stateDictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         NSNumber *state_number = (NSNumber*)key;
         NSString *title = (NSString*)obj;
         NSString *language = [[DBLanguageManager shareManager] fetchLanguageWithKey:title languageType:languageType];
         language = language?language:title;
-        [self setTitle:language forState:[state_number integerValue]];
+        [self lf_setTitle:language forState:[state_number integerValue]];
     }];
 }
 
