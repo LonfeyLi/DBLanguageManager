@@ -19,26 +19,47 @@
     dispatch_once(&onceToken, ^{
         Class class = [self class];
         
-        SEL originalSelectorDidAppear = @selector(setTitle:forState:);
-        SEL swizzledSelectorDidAppear = @selector(lf_setTitle:forState:);
+        SEL originalSelector = @selector(setTitle:forState:);
+        SEL swizzledSelector = @selector(lf_setTitle:forState:);
         
-        Method originalMethodAppear = class_getInstanceMethod(class, originalSelectorDidAppear);
-        Method swizzledMethodAppear = class_getInstanceMethod(class, swizzledSelectorDidAppear);
+        Method originalMethod = class_getInstanceMethod(class, originalSelector);
+        Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
         
         BOOL willAddMethod =
         class_addMethod(class,
-                        originalSelectorDidAppear,
-                        method_getImplementation(swizzledMethodAppear),
-                        method_getTypeEncoding(swizzledMethodAppear));
+                        originalSelector,
+                        method_getImplementation(swizzledMethod),
+                        method_getTypeEncoding(swizzledMethod));
         
         if (willAddMethod) {
             class_replaceMethod(class,
-                                swizzledSelectorDidAppear,
-                                method_getImplementation(originalMethodAppear),
-                                method_getTypeEncoding(originalMethodAppear));
+                                swizzledSelector,
+                                method_getImplementation(originalMethod),
+                                method_getTypeEncoding(originalMethod));
         } else {
-            method_exchangeImplementations(originalMethodAppear, swizzledMethodAppear);
+            method_exchangeImplementations(originalMethod, swizzledMethod);
         }
+        
+//        SEL originalSelector1 = @selector(setTitle:forState:);
+//        SEL swizzledSelector1 = @selector(lf_setTitle:forState:);
+//
+//        Method originalMethod1 = class_getInstanceMethod(class, originalSelector1);
+//        Method swizzledMethod1 = class_getInstanceMethod(class, swizzledSelector1);
+//
+//        BOOL willAddMethod1 =
+//        class_addMethod(class,
+//                        originalSelector1,
+//                        method_getImplementation(swizzledMethod1),
+//                        method_getTypeEncoding(swizzledMethod1));
+//
+//        if (willAddMethod1) {
+//            class_replaceMethod(class,
+//                                swizzledSelector1,
+//                                method_getImplementation(originalMethod1),
+//                                method_getTypeEncoding(originalMethod1));
+//        } else {
+//            method_exchangeImplementations(originalMethod1, swizzledMethod1);
+//        }
     });
 }
 -(NSMutableDictionary*)stateDictionary{
@@ -58,6 +79,7 @@
     NSString *languageType = [[DBLanguageManager shareManager] fetchCurrentLanguageType];
     NSString *language = [[DBLanguageManager shareManager] fetchLanguageWithKey:title languageType:languageType];
     if (language) {
+        self.titleLabel.lineBreakMode = NSLineBreakByClipping;
         [[DBLanguageManager shareManager] addView:self];
         [self lf_setTitle:language forState:state];
     } else {

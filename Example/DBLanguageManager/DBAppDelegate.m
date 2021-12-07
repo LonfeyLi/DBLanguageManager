@@ -22,7 +22,9 @@
     vc1.tabBarItem.title = @"tabbar_title_1";
     DBViewController *vc2 = [DBViewController new];
     vc2.tabBarItem.title = @"tabbar_title_2";
-    tab.viewControllers = @[vc1,vc2];
+    DBViewController *vc3 = [DBViewController new];
+    vc3.tabBarItem.title = @"tabbar_title_3";
+    tab.viewControllers = @[vc1,vc2,vc3];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = tab;

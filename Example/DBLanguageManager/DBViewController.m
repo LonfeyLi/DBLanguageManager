@@ -27,6 +27,7 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     button.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-100, [UIScreen mainScreen].bounds.size.height/2, 200, 30);
     [button setTitle:@"buttonText" forState:UIControlStateNormal];
+    [button setTitleColor:UIColor.orangeColor forState:UIControlStateNormal];
     [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 }

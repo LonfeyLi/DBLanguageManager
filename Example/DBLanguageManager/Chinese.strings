@@ -6,6 +6,7 @@
   Copyright © 2021 lonfey6@163.com. All rights reserved.
 */
 "tabbar_title_1" = "首页";
-"tabbar_title_2" = "我的";
+"tabbar_title_2" = "消息";
+"tabbar_title_3" = "我的";
 "labelText" = "你好 世界 !";
 "buttonText" = "切换语言";

@@ -6,6 +6,7 @@
   Copyright © 2021 lonfey6@163.com. All rights reserved.
 */
 "tabbar_title_1" = "Home";
-"tabbar_title_2" = "Mine";
+"tabbar_title_2" = "Message";
+"tabbar_title_3" = "Mine";
 "labelText" = "Hello World !";
 "buttonText" = "Change Language";
