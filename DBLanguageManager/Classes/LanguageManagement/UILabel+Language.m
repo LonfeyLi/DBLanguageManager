@@ -44,6 +44,7 @@
     }
     NSString *language = [self fetchLanguage];
     if (language) {
+        language = [language stringByReplacingOccurrencesOfString:DBLanguageManager.shareManager.markString withString:@""];
         [[DBLanguageManager shareManager] addView:self];
         [self lf_setText:language];
     } else {
@@ -57,8 +58,16 @@
     NSString *language = [self fetchLanguage];
     if (language) {
         [[DBLanguageManager shareManager] addView:self];
-        NSMutableAttributedString *attribute = [self attributedStringWithLanguage:language];
-        [self lf_setAttributedText:attribute];
+        if (self.attributesArray.count) {
+            [self setAttributedTextWithLanguage:language];
+        } else {
+            language = [language stringByReplacingOccurrencesOfString:DBLanguageManager.shareManager.markString withString:@""];
+            NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc] initWithString:language];
+            NSRange range = NSMakeRange(0, attributedText.string.length);
+            NSDictionary *dictionary = [attributedText attributesAtIndex:0 effectiveRange:&range];
+            [attribute addAttributes:dictionary range:NSMakeRange(0, language.length)];
+            [self lf_setAttributedText:attribute];
+        }
     } else {
         [self lf_setAttributedText:attributedText];
     }
@@ -68,28 +77,42 @@
     NSString *language = [[DBLanguageManager shareManager] fetchLanguageWithKey:self.languageKey languageType:languageType];
     return  language;
 }
-- (NSMutableAttributedString *)attributedStringWithLanguage:(NSString *)language {
-    NSInteger length = language.length;
-    NSRange range = NSMakeRange(0, self.attributedText.string.length);
-    NSDictionary *dictionary = [self.attributedText attributesAtIndex:0 effectiveRange:&range];
-    NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc] initWithString:language];
-    range = NSMakeRange(0, length);
-    [attribute addAttributes:dictionary range:range];
-    return  attribute;
-}
 
 - (void)changeLanguage {
     NSString *language = [self fetchLanguage];
     if (language) {
-        [self setTextWithLanguage:language];
+        if (self.attributedText) {
+            [self setAttributedTextWithLanguage:language];
+        } else {
+            [self lf_setText:language];
+        }
     }
 }
-- (void)setTextWithLanguage:(NSString *)language {
-    if (self.attributedText) {
-        NSMutableAttributedString *attribute = [self attributedStringWithLanguage:language];
+- (void)setAttributedTextWithLanguage:(NSString *)language {
+    if (self.attributesArray.count) {
+        NSLog(@"%@",self.attributesArray);
+        NSArray<NSString *> *textArray = [language componentsSeparatedByString:DBLanguageManager.shareManager.markString];
+        language = [language stringByReplacingOccurrencesOfString:DBLanguageManager.shareManager.markString withString:@""];
+        NSMutableAttributedString *attributedText = [NSMutableAttributedString new];
+        [textArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (idx<self.attributesArray.count) {
+                NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:obj];
+                [att addAttributes:self.attributesArray[idx] range:NSMakeRange(0, obj.length)];
+                [attributedText appendAttributedString:att];
+            } else {
+                NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:obj];
+                [att addAttributes:self.attributesArray[0] range:NSMakeRange(0, obj.length)];
+                [attributedText appendAttributedString:att];
+            }
+        }];
+        [self lf_setAttributedText:attributedText];
+    }
+    else {
+        NSRange range = NSMakeRange(0, self.attributedText.string.length);
+        NSDictionary *dictionary = [self.attributedText attributesAtIndex:0 effectiveRange:&range];
+        NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc] initWithString:language];
+        [attribute addAttributes:dictionary range:NSMakeRange(0, language.length)];
         [self lf_setAttributedText:attribute];
-    } else {
-        [self lf_setText:language];
     }
 }
 

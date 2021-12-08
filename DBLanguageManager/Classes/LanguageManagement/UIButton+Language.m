@@ -98,7 +98,7 @@
     }];
 }
 
-- (void)dealloc{
+- (void)dealloc {
     [self.stateDictionary removeAllObjects];
     [[DBLanguageManager shareManager] removeView:self];
 }

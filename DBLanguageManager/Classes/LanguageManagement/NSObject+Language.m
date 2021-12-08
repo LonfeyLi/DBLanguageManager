@@ -19,7 +19,16 @@
 - (void)setLanguageKey:(NSString *)languageKey {
     objc_setAssociatedObject(self, @selector(languageKey), languageKey, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-
+- (NSArray *)attributesArray {
+    NSArray *attributes = objc_getAssociatedObject(self, @selector(attributesArray));
+    if (!attributes) {
+        self.attributesArray = attributes;
+    }
+    return attributes;
+}
+- (void)setAttributesArray:(NSArray *)attributesArray {
+    objc_setAssociatedObject(self, @selector(attributesArray), attributesArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 - (void)changeLanguage {
 }
 @end

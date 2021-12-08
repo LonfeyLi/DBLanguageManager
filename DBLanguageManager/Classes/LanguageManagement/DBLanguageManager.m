@@ -34,9 +34,13 @@ static DBLanguageManager *_manager = nil;
         self.viewsDic = [NSMutableDictionary dictionary];
         self.recusiveLock = [[NSRecursiveLock alloc] init];
         self.languageDictionary = [NSDictionary dictionary];
-        self.defaultLanguage = @"Englosh";
+        self.defaultLanguage = @"English";
+        self.markString = @"#";
     }
     return self;
+}
+- (void)configureMarkString:(NSString *)markString {
+    self.markString = markString;
 }
 - (void)configureDefaultLanguage:(NSString *)language {
     self.defaultLanguage = language;

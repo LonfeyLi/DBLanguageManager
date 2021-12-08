@@ -11,8 +11,13 @@ NS_ASSUME_NONNULL_BEGIN
 static NSString *const kLanguageKey = @"kLanguageKey";
 
 @interface DBLanguageManager : NSObject
-
+@property(nonatomic,strong) NSString *markString;
 + (instancetype)shareManager;
+/**
+ 配置分割符号：用来处理富文本
+ * markString: 默认"#"
+ */
+- (void)configureMarkString:(NSString *)markString;
 /**
  配置默认的语言：如果配置的语言不包含系统当前的语言，就读取默认语言，不配置就默认为英语
  * language: 默认语言,和type保持一致
