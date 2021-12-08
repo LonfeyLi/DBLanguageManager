@@ -21,8 +21,9 @@
     self.view.backgroundColor = UIColor.whiteColor;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height/2-80, [UIScreen mainScreen].bounds.size.width, 20)];
-    label.attributesArray = @[@{NSForegroundColorAttributeName:UIColor.blackColor},@{NSForegroundColorAttributeName:UIColor.redColor},@{NSForegroundColorAttributeName:UIColor.blackColor},@{NSForegroundColorAttributeName:UIColor.blueColor}];
-    label.attributedText = [[NSAttributedString alloc] initWithString:@"labelText"];
+//    label.attributesArray = @[@{NSForegroundColorAttributeName:UIColor.blackColor},@{NSForegroundColorAttributeName:UIColor.redColor},@{NSForegroundColorAttributeName:UIColor.blackColor},@{NSForegroundColorAttributeName:UIColor.blueColor}];
+//    label.attributedText = [[NSAttributedString alloc] initWithString:@"labelText"];
+    label.text = @"labelText";
     label.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:label];
     

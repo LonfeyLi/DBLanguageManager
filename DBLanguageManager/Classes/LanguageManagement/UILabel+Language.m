@@ -84,6 +84,7 @@
         if (self.attributedText) {
             [self setAttributedTextWithLanguage:language];
         } else {
+            language = [language stringByReplacingOccurrencesOfString:DBLanguageManager.shareManager.markString withString:@""];
             [self lf_setText:language];
         }
     }
