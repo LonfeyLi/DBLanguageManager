@@ -19,12 +19,13 @@
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColor.redColor} forState:UIControlStateSelected];
     UITabBarController *tab = [[UITabBarController alloc] init];
     DBViewController *vc1 = [DBViewController new];
-    vc1.tabBarItem.title = @"tabbar_title_1";
+    UINavigationController *nc1 = [[UINavigationController alloc] initWithRootViewController:vc1];
+    nc1.tabBarItem.title = @"tabbar_title_1";
     DBViewController *vc2 = [DBViewController new];
     vc2.tabBarItem.title = @"tabbar_title_2";
     DBViewController *vc3 = [DBViewController new];
     vc3.tabBarItem.title = @"tabbar_title_3";
-    tab.viewControllers = @[vc1,vc2,vc3];
+    tab.viewControllers = @[nc1,vc2,vc3];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = tab;

@@ -61,4 +61,7 @@
         [self lf_setImage:[UIImage imageNamed:language]];
     }
 }
+- (void)dealloc {
+    [[DBLanguageManager shareManager] removeObject:self];
+}
 @end

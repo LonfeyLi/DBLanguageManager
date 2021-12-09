@@ -12,7 +12,7 @@
 static DBLanguageManager *_manager = nil;
 
 @interface DBLanguageManager ()
-@property(nonatomic,strong) NSMutableDictionary *objectDic;
+@property(nonatomic,strong) NSMapTable *objectTable;
 @property(nonatomic,strong) NSRecursiveLock *recusiveLock;
 @property(nonatomic,strong) NSString *defaultLanguage;
 @property(nonatomic,strong) NSDictionary *languageDictionary;
@@ -31,7 +31,7 @@ static DBLanguageManager *_manager = nil;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.objectDic = [NSMutableDictionary dictionary];
+        self.objectTable = [[NSMapTable alloc] initWithKeyOptions:NSPointerFunctionsCopyIn valueOptions:NSPointerFunctionsWeakMemory capacity:CGFLOAT_MAX];
         self.recusiveLock = [[NSRecursiveLock alloc] init];
         self.languageDictionary = [NSDictionary dictionary];
         self.defaultLanguage = @"English";
@@ -48,10 +48,19 @@ static DBLanguageManager *_manager = nil;
 - (void)configureLanguagesDictionary:(NSDictionary *)languageDictionary {
     self.languageDictionary = languageDictionary;
 }
-
+- (void)addObject:(NSObject *)object {
+    NSString *hashKey = [NSString stringWithFormat:@"%ld",object.hash];
+    [self.objectTable setObject:object forKey:hashKey];
+}
+- (void)removeObject:(NSObject *)object {
+    NSString *hashKey = [NSString stringWithFormat:@"%ld",object.hash];
+    if ([self.objectTable.keyEnumerator.allObjects containsObject:hashKey]) {
+        [self.objectTable removeObjectForKey:hashKey];
+    }
+}
 - (void)changeLanguageWithType:(NSString *)type {
     [self saveLanguageWithType:type];
-    [self.objectDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    [self.objectTable.objectEnumerator.allObjects enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self.recusiveLock lock];
         [obj changeLanguage];
         [self.recusiveLock unlock];
@@ -98,16 +107,5 @@ static DBLanguageManager *_manager = nil;
     return languageType;
 }
 
-- (void)addObject:(NSObject *)object {
-    NSString *hashKey = [NSString stringWithFormat:@"%ld",object.hash];
-    if (![self.objectDic.allKeys containsObject:hashKey]) {
-        [self.objectDic setValue:object forKey:hashKey];
-    }
-}
-- (void)removeObject:(NSObject *)object {
-    NSString *hashKey = [NSString stringWithFormat:@"%ld",object.hash];
-    if ([self.objectDic.allKeys containsObject:hashKey]) {
-        [self.objectDic removeObjectForKey:hashKey];
-    }
-}
+
 @end

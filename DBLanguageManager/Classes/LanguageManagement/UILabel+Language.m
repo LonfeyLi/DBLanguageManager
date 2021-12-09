@@ -116,7 +116,7 @@
     }
 }
 
--(void)dealloc{
+- (void)dealloc {
     [[DBLanguageManager shareManager] removeObject:self];
 }
 @end
