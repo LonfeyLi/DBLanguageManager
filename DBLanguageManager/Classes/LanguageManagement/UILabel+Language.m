@@ -45,7 +45,7 @@
     NSString *language = [self fetchLanguage];
     if (language) {
         language = [language stringByReplacingOccurrencesOfString:DBLanguageManager.shareManager.markString withString:@""];
-        [[DBLanguageManager shareManager] addView:self];
+        [[DBLanguageManager shareManager] addObject:self];
         [self lf_setText:language];
     } else {
         [self lf_setText:text];
@@ -57,7 +57,7 @@
     }
     NSString *language = [self fetchLanguage];
     if (language) {
-        [[DBLanguageManager shareManager] addView:self];
+        [[DBLanguageManager shareManager] addObject:self];
         if (self.attributesArray.count) {
             [self setAttributedTextWithLanguage:language];
         } else {
@@ -91,7 +91,6 @@
 }
 - (void)setAttributedTextWithLanguage:(NSString *)language {
     if (self.attributesArray.count) {
-        NSLog(@"%@",self.attributesArray);
         NSArray<NSString *> *textArray = [language componentsSeparatedByString:DBLanguageManager.shareManager.markString];
         language = [language stringByReplacingOccurrencesOfString:DBLanguageManager.shareManager.markString withString:@""];
         NSMutableAttributedString *attributedText = [NSMutableAttributedString new];
@@ -118,7 +117,7 @@
 }
 
 -(void)dealloc{
-    [[DBLanguageManager shareManager] removeView:self];
+    [[DBLanguageManager shareManager] removeObject:self];
 }
 @end
 

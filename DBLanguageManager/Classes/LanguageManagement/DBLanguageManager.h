@@ -44,16 +44,26 @@ static NSString *const kLanguageKey = @"kLanguageKey";
  获取当前语言
  */
 - (NSString *)fetchCurrentLanguageType;
+///**
+// 添加需要改变语言的view
+// * view:改变语言的view
+// */
+//- (void)addView:(UIView *)view;
+///**
+// 移除需要改变语言的view
+// * view：移除的view
+// */
+//- (void)removeView:(UIView *)view;
 /**
- 添加需要改变语言的view
- * view:改变语言的view
+ 添加需要改变语言的object
+ * object:改变语言的object
  */
-- (void)addView:(UIView *)view;
+- (void)addObject:(NSObject *)object;
 /**
- 移除需要改变语言的view
- * view：view对应的哈希值
+ 移除需要改变语言的object
+ * object：移除的object
  */
-- (void)removeView:(UIView *)view;
+- (void)removeObject:(NSObject *)object;
 @end
 
 NS_ASSUME_NONNULL_END

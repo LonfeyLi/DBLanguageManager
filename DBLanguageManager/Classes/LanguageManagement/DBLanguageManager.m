@@ -12,7 +12,7 @@
 static DBLanguageManager *_manager = nil;
 
 @interface DBLanguageManager ()
-@property(nonatomic,strong) NSMutableDictionary *viewsDic;
+@property(nonatomic,strong) NSMutableDictionary *objectDic;
 @property(nonatomic,strong) NSRecursiveLock *recusiveLock;
 @property(nonatomic,strong) NSString *defaultLanguage;
 @property(nonatomic,strong) NSDictionary *languageDictionary;
@@ -31,7 +31,7 @@ static DBLanguageManager *_manager = nil;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.viewsDic = [NSMutableDictionary dictionary];
+        self.objectDic = [NSMutableDictionary dictionary];
         self.recusiveLock = [[NSRecursiveLock alloc] init];
         self.languageDictionary = [NSDictionary dictionary];
         self.defaultLanguage = @"English";
@@ -51,10 +51,9 @@ static DBLanguageManager *_manager = nil;
 
 - (void)changeLanguageWithType:(NSString *)type {
     [self saveLanguageWithType:type];
-    [self.viewsDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        UIView *view = (UIView *)obj;
+    [self.objectDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [self.recusiveLock lock];
-        [view changeLanguage];
+        [obj changeLanguage];
         [self.recusiveLock unlock];
     }];
 }
@@ -99,18 +98,16 @@ static DBLanguageManager *_manager = nil;
     return languageType;
 }
 
-- (void)addView:(UIView *)view {
-    NSString *hashKey = [NSString stringWithFormat:@"%ld",view.hash];
-    if (![self.viewsDic.allKeys containsObject:hashKey]) {
-        [self.viewsDic setValue:view forKey:hashKey];
+- (void)addObject:(NSObject *)object {
+    NSString *hashKey = [NSString stringWithFormat:@"%ld",object.hash];
+    if (![self.objectDic.allKeys containsObject:hashKey]) {
+        [self.objectDic setValue:object forKey:hashKey];
     }
 }
-
-- (void)removeView:(UIView *)view {
-    NSString *hashKey = [NSString stringWithFormat:@"%ld",view.hash];
-    if ([self.viewsDic.allKeys containsObject:hashKey]) {
-        [self.viewsDic removeObjectForKey:hashKey];
+- (void)removeObject:(NSObject *)object {
+    NSString *hashKey = [NSString stringWithFormat:@"%ld",object.hash];
+    if ([self.objectDic.allKeys containsObject:hashKey]) {
+        [self.objectDic removeObjectForKey:hashKey];
     }
 }
-
 @end

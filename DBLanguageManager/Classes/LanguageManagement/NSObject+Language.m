@@ -29,6 +29,16 @@
 - (void)setAttributesArray:(NSArray *)attributesArray {
     objc_setAssociatedObject(self, @selector(attributesArray), attributesArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+- (BOOL)imageIsFilePath {
+    BOOL isFilePath = objc_getAssociatedObject(self, @selector(imageIsFilePath));
+    if (!isFilePath) {
+        self.imageIsFilePath = isFilePath;
+    }
+    return isFilePath;
+}
+- (void)setImageIsFilePath:(BOOL)imageIsFilePath {
+    objc_setAssociatedObject(self, @selector(imageIsFilePath), @(imageIsFilePath), OBJC_ASSOCIATION_ASSIGN);
+}
 - (void)changeLanguage {
 }
 @end

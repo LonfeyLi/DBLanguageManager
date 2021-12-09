@@ -39,27 +39,7 @@
         } else {
             method_exchangeImplementations(originalMethod, swizzledMethod);
         }
-        
-//        SEL originalSelector1 = @selector(setTitle:forState:);
-//        SEL swizzledSelector1 = @selector(lf_setTitle:forState:);
-//
-//        Method originalMethod1 = class_getInstanceMethod(class, originalSelector1);
-//        Method swizzledMethod1 = class_getInstanceMethod(class, swizzledSelector1);
-//
-//        BOOL willAddMethod1 =
-//        class_addMethod(class,
-//                        originalSelector1,
-//                        method_getImplementation(swizzledMethod1),
-//                        method_getTypeEncoding(swizzledMethod1));
-//
-//        if (willAddMethod1) {
-//            class_replaceMethod(class,
-//                                swizzledSelector1,
-//                                method_getImplementation(originalMethod1),
-//                                method_getTypeEncoding(originalMethod1));
-//        } else {
-//            method_exchangeImplementations(originalMethod1, swizzledMethod1);
-//        }
+
     });
 }
 -(NSMutableDictionary*)stateDictionary{
@@ -80,7 +60,7 @@
     NSString *language = [[DBLanguageManager shareManager] fetchLanguageWithKey:title languageType:languageType];
     if (language) {
         self.titleLabel.lineBreakMode = NSLineBreakByClipping;
-        [[DBLanguageManager shareManager] addView:self];
+        [[DBLanguageManager shareManager] addObject:self];
         [self lf_setTitle:language forState:state];
     } else {
         [self lf_setTitle:title forState:state];
@@ -100,6 +80,6 @@
 
 - (void)dealloc {
     [self.stateDictionary removeAllObjects];
-    [[DBLanguageManager shareManager] removeView:self];
+    [[DBLanguageManager shareManager] removeObject:self];
 }
 @end

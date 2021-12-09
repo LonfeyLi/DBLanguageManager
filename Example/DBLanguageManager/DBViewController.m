@@ -19,16 +19,20 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height/2-80, [UIScreen mainScreen].bounds.size.width, 20)];
-//    label.attributesArray = @[@{NSForegroundColorAttributeName:UIColor.blackColor},@{NSForegroundColorAttributeName:UIColor.redColor},@{NSForegroundColorAttributeName:UIColor.blackColor},@{NSForegroundColorAttributeName:UIColor.blueColor}];
-//    label.attributedText = [[NSAttributedString alloc] initWithString:@"labelText"];
-    label.text = @"labelText";
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    UIImageView *imageView = [UIImageView new];
+    imageView.frame = CGRectMake((screenWidth-300)/2, 80, 300, 300);
+    imageView.image = [UIImage imageNamed:@"test_image"];
+    [self.view addSubview:imageView];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 420, screenWidth, 20)];
+    label.attributesArray = @[@{NSForegroundColorAttributeName:UIColor.blackColor},@{NSForegroundColorAttributeName:UIColor.redColor},@{NSForegroundColorAttributeName:UIColor.blackColor},@{NSForegroundColorAttributeName:UIColor.blueColor}];
+    label.attributedText = [[NSAttributedString alloc] initWithString:@"labelText"];
+//    label.text = @"labelText";
     label.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:label];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2-100, [UIScreen mainScreen].bounds.size.height/2, 200, 30);
+    button.frame = CGRectMake(screenWidth/2-100, 480, 200, 30);
     [button setTitle:@"buttonText" forState:UIControlStateNormal];
     [button setTitleColor:UIColor.orangeColor forState:UIControlStateNormal];
     [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];

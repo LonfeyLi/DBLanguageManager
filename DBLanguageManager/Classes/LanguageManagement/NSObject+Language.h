@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSObject (Language)
 @property(nonatomic,strong,setter=setLanguageKey:) NSString *languageKey;
 @property(nonatomic,strong,setter=setAttributesArray:) NSArray *attributesArray;
+@property(nonatomic,assign,setter=setImageIsFilePath:) BOOL imageIsFilePath;
 - (void)changeLanguage;
 @end
 

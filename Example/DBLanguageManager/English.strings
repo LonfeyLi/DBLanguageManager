@@ -10,3 +10,5 @@
 "tabbar_title_3" = "Mine";
 "labelText" = "Hello #World#! Please Start #Coding# !";
 "buttonText" = "Change Language";
+//image
+"test_image" = "test_image_english";

@@ -17,6 +17,10 @@
 		6614726C43E8FA08F3BEC00F51EB182D /* UILabel+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E8753B11305800F5C91AA4D6688355 /* UILabel+Language.m */; };
 		6C98CA3C2C4B3D9D75DA6CDECBD3E603 /* NSObject+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B5F276E6B416422C6C99426FA9773F /* NSObject+Language.m */; };
 		7C47754726AE058A91342979671C2375 /* Pods-DBLanguageManager_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2ADDABB35EF9BA2C3AFB472E3127852D /* Pods-DBLanguageManager_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		940B32882761B50000E03501 /* UIImage+Language.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B32862761B50000E03501 /* UIImage+Language.h */; };
+		940B32892761B50000E03501 /* UIImage+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B32872761B50000E03501 /* UIImage+Language.m */; };
+		940B328C2761F51F00E03501 /* UIImageView+Language.h in Headers */ = {isa = PBXBuildFile; fileRef = 940B328A2761F51F00E03501 /* UIImageView+Language.h */; };
+		940B328D2761F51F00E03501 /* UIImageView+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 940B328B2761F51F00E03501 /* UIImageView+Language.m */; };
 		A08991D208C87C91A058FA8191F6129F /* DBLanguageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 854DBB01CACB5910E12CCE9220940B4C /* DBLanguageManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AEC0E2C681FAABEBB47415299DBD58BA /* Pods-DBLanguageManager_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FF2ED6A66004934B21064ED20F602A1 /* Pods-DBLanguageManager_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C5DF7599F603CEABD610AC257EA6D8CA /* Pods-DBLanguageManager_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA0C456DB5F68848AC42F58107B3542 /* Pods-DBLanguageManager_Tests-dummy.m */; };
@@ -68,6 +72,10 @@
 		7AC43DEC350972B60F11D818FBFA7717 /* NSObject+Language.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+Language.h"; path = "DBLanguageManager/Classes/LanguageManagement/NSObject+Language.h"; sourceTree = "<group>"; };
 		854DBB01CACB5910E12CCE9220940B4C /* DBLanguageManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBLanguageManager.h; path = DBLanguageManager/Classes/LanguageManagement/DBLanguageManager.h; sourceTree = "<group>"; };
 		91AF6355EA636E181A1E738450C5FAAE /* DBLanguageManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DBLanguageManager.release.xcconfig; sourceTree = "<group>"; };
+		940B32862761B50000E03501 /* UIImage+Language.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Language.h"; sourceTree = "<group>"; };
+		940B32872761B50000E03501 /* UIImage+Language.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Language.m"; sourceTree = "<group>"; };
+		940B328A2761F51F00E03501 /* UIImageView+Language.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Language.h"; sourceTree = "<group>"; };
+		940B328B2761F51F00E03501 /* UIImageView+Language.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Language.m"; sourceTree = "<group>"; };
 		9426ACA4B3B5BC9575E8515C86FF2D19 /* Pods-DBLanguageManager_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DBLanguageManager_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		950BB43523F9C33A022FF6194FE39AD3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		990AF4393CCF04421E7ADAF902E29A6D /* DBLanguageManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = DBLanguageManager.podspec; sourceTree = "<group>"; tabWidth = 2; };
@@ -133,6 +141,10 @@
 				0038BDF7EB4626328ADD9A19E01384EB /* UIButton+Language.m */,
 				558CA04A83F34930997E9094B7FBC19B /* UILabel+Language.h */,
 				F9E8753B11305800F5C91AA4D6688355 /* UILabel+Language.m */,
+				940B32862761B50000E03501 /* UIImage+Language.h */,
+				940B32872761B50000E03501 /* UIImage+Language.m */,
+				940B328A2761F51F00E03501 /* UIImageView+Language.h */,
+				940B328B2761F51F00E03501 /* UIImageView+Language.m */,
 				930CE472E8D0C0FDF69173DA43738AF0 /* Pod */,
 				75F60C75AE50B65AAF908A7BF58ED906 /* Support Files */,
 			);
@@ -259,6 +271,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				940B32882761B50000E03501 /* UIImage+Language.h in Headers */,
+				940B328C2761F51F00E03501 /* UIImageView+Language.h in Headers */,
 				A08991D208C87C91A058FA8191F6129F /* DBLanguageManager.h in Headers */,
 				F653185E80E505F7CF9A3580F00B15BF /* DBLanguageManager-umbrella.h in Headers */,
 				FFA7661B2126DA2E5D8003C021DAD0F6 /* NSObject+Language.h in Headers */,
@@ -401,6 +415,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				470183A2C68273B4D59816CBC3A952E0 /* DBLanguageManager.m in Sources */,
+				940B32892761B50000E03501 /* UIImage+Language.m in Sources */,
+				940B328D2761F51F00E03501 /* UIImageView+Language.m in Sources */,
 				2F4F4462D5DD14B8616C0A51CC8C7CDE /* DBLanguageManager-dummy.m in Sources */,
 				6C98CA3C2C4B3D9D75DA6CDECBD3E603 /* NSObject+Language.m in Sources */,
 				2AEC983DECCA9795C8966E12DB490CA3 /* UIButton+Language.m in Sources */,

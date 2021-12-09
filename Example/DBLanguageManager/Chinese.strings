@@ -10,3 +10,5 @@
 "tabbar_title_3" = "我的";
 "labelText" = "你好 #世界# ! 请开始#编码#！";
 "buttonText" = "切换语言";
+//image
+"test_image" = "test_image_chinese";
