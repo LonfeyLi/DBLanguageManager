@@ -1,22 +1,29 @@
 {
   "name": "DBLanguageManager",
-  "version": "0.1.0",
-  "summary": "A short description of DBLanguageManager.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/lonfey6@163.com/DBLanguageManager",
+  "version": "1.1.0",
+  "summary": "a management tool of iOS project language configuration",
+  "description": "TODO: iOS国际化配置工具",
+  "homepage": "https://github.com/LonfeyLi/DBLanguageManager",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "lonfey6@163.com": "lufei@maltbaby.com.cn"
+    "LonfeyLi": "lonfey6@163.com"
   },
   "source": {
-    "git": "https://github.com/lonfey6@163.com/DBLanguageManager.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/LonfeyLi/DBLanguageManager.git",
+    "tag": "1.1.0"
+  },
+  "pod_target_xcconfig": {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
+  },
+  "user_target_xcconfig": {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
   },
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "DBLanguageManager/Classes/**/*"
+  "requires_arc": true,
+  "source_files": "DBLanguageManager/Classes/**/*{.h,.m}"
 }

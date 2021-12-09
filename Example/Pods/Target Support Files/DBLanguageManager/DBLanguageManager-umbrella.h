@@ -13,6 +13,8 @@
 #import "DBLanguageManager.h"
 #import "NSObject+Language.h"
 #import "UIButton+Language.h"
+#import "UIImage+Language.h"
+#import "UIImageView+Language.h"
 #import "UILabel+Language.h"
 
 FOUNDATION_EXPORT double DBLanguageManagerVersionNumber;
