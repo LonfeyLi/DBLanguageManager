@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'DBLanguageManager'
-s.version          = '1.1.1'
+s.version          = '1.1.2'
 s.summary          = 'a management tool of iOS project language configuration'
 s.description      = <<-DESC
 TODO: iOS国际化配置工具
